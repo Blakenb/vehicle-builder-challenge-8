@@ -8,17 +8,8 @@ import AbleToTow from "../interfaces/AbleToTow.js";
 // TODO: The Truck class should extend the Vehicle class and should implement the AbleToTow interface
 class Truck extends Vehicle implements AbleToTow {
   towingCapacity: number;
-  vin: string;
-  color: string;
-  make: string;
-  model: string;
-  year: number;
-  weight: number;
-  topSpeed: number;
-  wheels: Wheel[];
 
   constructor(
-    towingCapacity: number,
     vin: string,
     color: string,
     make: string,
@@ -26,18 +17,12 @@ class Truck extends Vehicle implements AbleToTow {
     year: number,
     weight: number,
     topSpeed: number,
-    wheels: Wheel[]
+    wheels: Wheel[],
+    towingCapacity: number
   ) {
-    super();
+    super(vin, color, make, model, year, weight, topSpeed, wheels);
     this.towingCapacity = towingCapacity;
-    this.vin = vin;
-    this.color = color;
-    this.make = make;
-    this.model = model;
-    this.year = year;
-    this.weight = weight;
-    this.topSpeed = topSpeed;
-    this.wheels = wheels;
+
     if (this.wheels.length !== 4) {
       let wheels: Wheel[] = [];
       for (let i = 0; i < 4; i++) {
@@ -47,16 +32,24 @@ class Truck extends Vehicle implements AbleToTow {
     }
   }
 
-  // TODO: The constructor should check if the wheels array has 4 elements and create 4 new default Wheel objects if it does not
-
   // TODO: Implement the tow method from the AbleToTow interface
   tow(vehicle: Truck | Motorbike | Car): void {
     // TODO: Get the make an model of the vehicle if it exists
-    // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
-    // TODO: If it is, log that the vehicle is being towed
-    // TODO: If it is not, log that the vehicle is too heavy to be towed
-  }
 
+    if (vehicle.weight <= this.towingCapacity) {
+      console.log(
+        `Vehicle of make ${vehicle.make} and model ${vehicle.model} being towed`
+      );
+    } else {
+      console.log(
+        `vehicle of make ${vehicle.make} and model ${vehicle.model} is to heavy to`
+      );
+    }
+  }
+  override printDetails(): void {
+    super.printDetails();
+    console.log(`towing capacity ${this.towingCapacity} `);
+  }
   // TODO: Override the printDetails method from the Vehicle class
   // TODO: The method should call the printDetails method of the parent class
   // TODO: The method should log the details of the Truck
