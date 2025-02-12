@@ -364,7 +364,7 @@ class Cli {
           case "Reverse":
             selectedVehicle.reverse();
             break;
-          case "Tow":
+          case "Tow a vehicle":
             if (selectedVehicle instanceof Truck) {
               this.findVehicleToTow(selectedVehicle);
               return;
@@ -372,7 +372,7 @@ class Cli {
               console.log("Only trucks can tow.");
             }
             break;
-          case "Wheelie":
+          case "Do a wheelie":
             if (selectedVehicle instanceof Motorbike) {
               selectedVehicle.wheelie();
             } else {

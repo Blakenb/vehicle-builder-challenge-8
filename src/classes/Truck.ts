@@ -30,13 +30,14 @@ class Truck extends Vehicle implements AbleToTow {
       );
     } else {
       console.log(
-        `vehicle of make ${vehicle.make} and model ${vehicle.model} is to heavy to`
+        `Vehicle of make ${vehicle.make} and model ${vehicle.model} is too heavy to tow`
       );
     }
   }
+
   override printDetails(): void {
     super.printDetails();
-    console.log(`towing capacity ${this.towingCapacity} `);
+    console.log(`Towing capacity: ${this.towingCapacity} lbs`);
   }
 }
 
